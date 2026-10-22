@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1 style="color:{{ res_mood_color }};">{{ ans_corr_per }}</h1>
+	<br>
+	<h2> Number of Questions Correct: {{ ques_corr }}</h2>
+	<h2> Number of Total Questions Answered: {{ total_ques }}</h2>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+	{{ q_body }}
+</div>
+<div class="container mt-3">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+<form action="/quiz" method="POST">
+	<div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
+		<table style="width: max-content; min-width: 500px; table-layout: fixed; border-spacing: 10px; border-collapse: separate;">
+			<colgroup>
+				<col style="width: 50%;">
+				<col style="width: 50%;">
+			</colgroup>
+			<tr>
+				<td><button type="submit" name="ans_button" value="1" style="width: 100%; padding: 10px;">{{ q_o_1 }}</button></td>
+				<td><button type="submit" name="ans_button" value="2" style="width: 100%; padding: 10px;">{{ q_o_2 }}</button></td>
+			</tr>
+			<tr>
+				<td><button type="submit" name="ans_button" value="3" style="width: 100%; padding: 10px;">{{ q_o_3 }}</button></td>
+				<td><button type="submit" name="ans_button" value="4" style="width: 100%; padding: 10px;">{{ q_o_4 }}</button></td>
+			</tr>
+		</table>
+	</div>
+	<div style="display: flex; justify-content: center; width: 100%;">
+		<button type="submit" name="exit_quiz" value="exit_quiz" style="padding: 10px 20px;">End Quiz</button>
+	</div>
+</form>
+{% endblock %}
